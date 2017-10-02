@@ -1,0 +1,16 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 14, 2016, 1:15:05 AM
+    Author     : akhtar
+*/
+@media (max-width: 992px) {
+    .founder
+    {
+        float: left;
+        background-color: black;
+    }
+}

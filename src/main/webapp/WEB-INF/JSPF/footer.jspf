@@ -1,0 +1,64 @@
+<%-- 
+    Document   : index
+    Created on : Sep 12, 2017, 12:53:42 AM
+    Author     : akhtar
+--%>
+<div class="footer">
+	<div class="footer-mid">
+		<div class="container">
+			<div class="col-sm-3 ft-grid1">
+				<h3>Location</h3>
+				<p>Sipah Ibrahimabad,</p>
+				<p>Madhuban, Mau (U.P)</p>
+				<p>Mob : +91 945 458 2817</p>
+			</div>
+			<div class="col-sm-3 ft-grid2">
+				<h3>Follow Us</h3>
+				<ul class="social-in">
+					<li><a href="#"><i> </i></a></li>
+					<li><a href="#"><i class="twitter"> </i></a></li>
+					<li><a href="#"><i class="dribbble"> </i></a></li>
+				</ul>
+			</div>
+			<div class="col-sm-6 ft-grid1">
+				<h3>Newsletter</h3>
+				<form method="POST" name="subscribeForm">
+					<input type="text" value="" name="subscribeEmail"
+						placeholder="Enter email address" onfocus="this.value = '';"
+						onblur="if (this.value == '') {
+                                        this.value = '';
+                                    }"
+						required=""> <input type="button" id="subscribeSubmit"
+						value="Subscribe">
+
+				</form>
+				<div id="subscribeResponse"></div>
+
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="class-footer">
+		<div class="container">
+			<div class="col-md-6 footer-nav">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="team.html">About</a></li>
+					<li><a href="services.html">Services</a></li>
+					<li><a href="gallery.html">Gallery</a></li>
+					<li><a href="codes.html"> Short Codes</a></li>
+					<li><a href="contact.html">Contact</a></li>
+
+				</ul>
+			</div>
+			<div class="col-md-6 footer-grid">
+				<p>
+					© 2016 GASMPS. All rights reserved | Design by <a
+						href="https://www.linkedin.com/in/noman-akhtar-a37192b7/"
+						target="_blank">akhtar</a>
+				</p>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
