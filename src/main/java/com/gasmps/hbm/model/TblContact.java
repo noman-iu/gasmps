@@ -2,6 +2,12 @@ package com.gasmps.hbm.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.sun.istack.internal.NotNull;
+
 import java.sql.Timestamp;
 
 
@@ -19,15 +25,27 @@ public class TblContact implements Serializable {
 	@Column(name="contact_id")
 	private String contactId;
 
+	@NotBlank
+	@NotEmpty
+	@NotNull
 	@Column(name="contact_email")
 	private String contactEmail;
 
+	@NotBlank
+	@NotEmpty
+	@NotNull
 	@Column(name="contact_message")
 	private String contactMessage;
 
+	@NotBlank
+	@NotEmpty
+	@NotNull
 	@Column(name="contact_mobile")
 	private String contactMobile;
 
+	@NotBlank
+	@NotEmpty
+	@NotNull
 	@Column(name="contact_name")
 	private String contactName;
 

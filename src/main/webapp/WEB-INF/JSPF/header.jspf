@@ -3,7 +3,7 @@
     Created on : Oct 01, 2017, 12:53:42 AM
     Author     : akhtar
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="header">
 	<div class="navigation">
 		<div class="container">
@@ -57,7 +57,7 @@
 							</ul></li>
 						<li><a data-hover="Gallery" href="gallery.html"
 							class="scroll">Gallery</a></li>
-						<li><a data-hover="Contact" href="contact.html"
+						<li><a data-hover="Contact" href='<c:url value='contact' />'
 							class="scroll">Contact</a></li>
 						<li><a data-hover="O" class="popup-with-zoom-anim"
 							href="#small-dialog"><i class="glyphicon glyphicon-search">

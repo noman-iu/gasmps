@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class ApplicationUtilityLoader {
+public class ApplicationUtilityLoader {/*
 
 	private static HashMap<String, String> applicationCredential = new HashMap<>();
 	public static ApplicationUtilityLoader applicationUtilityLoader;
@@ -45,8 +45,8 @@ public class ApplicationUtilityLoader {
 		ResultSet rs = null;
 		String ret = null;
 		if (attribute == null) {
-			Global.appLog("Null attribute is accessed ",
-					ApplicationUtilityLoader.getInstance().getClass().getCanonicalName());
+			//Global.appLog("Null attribute is accessed ",
+				//	ApplicationUtilityLoader.getInstance().getClass().getCanonicalName());
 			ret = null;
 		}
 		attribute = attribute.trim();
@@ -245,4 +245,4 @@ public class ApplicationUtilityLoader {
 		}
 	}
 
-}
+*/}

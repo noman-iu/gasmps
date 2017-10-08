@@ -20,11 +20,11 @@ public class Constant {
 		public static final String MOBILE_DEVICE = "mobile";
 		public static final String DESKTOP_DEVICE = "desktop";
 	}
-	public static final class GenricResponseCode {
-		public static final String SUCCESSFUL_MESSAGE = "Successfully sent.";
-		public static final String SUCCESSFUL_CODE = "200";
-		public static final String DUPLICATE_MESSAGE = "This mail is already ragistered.";
-		
+	
+	public static enum GenricResponseCode {
+		GENRIC_SUCCESSFUL_MESSAGE,
+		GENRIC_SUCCESSFUL_CODE,
+		GENRIC_DUPLICATE_MESSAGE;
 	}
 	
 	public enum Sequence {

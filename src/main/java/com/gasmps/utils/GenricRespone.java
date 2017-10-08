@@ -1,11 +1,10 @@
 package com.gasmps.utils;
 
-import java.util.Map;
-
 public class GenricRespone {
 
 	private boolean status;
-	private Map<String, String> message;
+	private String message;
+	private int code = 200;
 
 	public boolean isStatus() {
 		return status;
@@ -15,17 +14,24 @@ public class GenricRespone {
 		this.status = status;
 	}
 
-	public Map<String, String> getMessage() {
+	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(Map<String, String> message) {
+	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	@Override
 	public String toString() {
-		return "GenricRespone [status=" + status + ", message=" + message + "]";
+		return "GenricRespone [status=" + status + ", message=" + message + ", code=" + code + "]";
 	}
-
 }

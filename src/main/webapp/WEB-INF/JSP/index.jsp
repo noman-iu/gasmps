@@ -10,7 +10,6 @@
         <title>G.A.S Memorial Public School</title>
         <LINK REL="SHORTCUT ICON" href="images/logo.png">
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery.min.js"></script>
         <script src="js/subscribe.js"></script>
