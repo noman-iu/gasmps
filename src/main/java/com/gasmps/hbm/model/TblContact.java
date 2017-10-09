@@ -3,6 +3,7 @@ package com.gasmps.hbm.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -28,6 +29,7 @@ public class TblContact implements Serializable {
 	@NotBlank
 	@NotEmpty
 	@NotNull
+	@Email
 	@Column(name="contact_email")
 	private String contactEmail;
 
