@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gasmps.hbm.dao.info.TblSubscribeInfo;
 import com.gasmps.hbm.model.TblSubscribe;
 import com.gasmps.hbm.service.TblSequenceService;
 import com.gasmps.hbm.service.TblSubscribeService;
@@ -15,48 +14,46 @@ import com.gasmps.utils.Constant;
 /**
  * @author akhtar
  */
-
 @Service("tblSubscribeServiceImpl")
 @Transactional
-public class TblSubscribeServiceImpl implements TblSubscribeService{
+public class TblSubscribeServiceImpl extends TblSubscribeService {
 
 	@Autowired
-	TblSubscribeInfo tblSubscribeInfo;
-	
-	@Autowired
 	TblSequenceService tblSequenceService;
-	
+
+	public TblSubscribeServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public TblSubscribe getSubscribeByKey(String id) {
-		return tblSubscribeInfo.getSubscribeByKey(id);
+		return super.getSubscribeByKey(id);
 	}
-	
+
 	@Override
 	public TblSubscribe getSubscribeByEmail(String email) {
-		return tblSubscribeInfo.getSubscribeByEmail(email);
+		return super.getSubscribeByEmail(email);
 	}
 
 	@Override
 	public List<TblSubscribe> getAllSubscribe() {
-		return tblSubscribeInfo.getAllSubscribe();
+		return super.getAllSubscribe();
 	}
 
 	@Override
 	public void updateSubscribe(TblSubscribe tblSubscribe) {
-		tblSubscribeInfo.updateSubscribe(tblSubscribe);
+		super.updateSubscribe(tblSubscribe);
 	}
 
 	@Override
 	public void deleteSubscribe(String email) {
-		tblSubscribeInfo.deleteSubscribe(email);
+		super.deleteSubscribe(email);
 	}
 
 	@Override
 	public void saveSubscribe(TblSubscribe tblSubscribe) throws Exception {
 		tblSubscribe.setSubscribeId(tblSequenceService.getNextSequenceByKey(Constant.Sequence.SUBSCRIBE.id));
-		tblSubscribeInfo.saveSubscribe(tblSubscribe);
+		super.saveSubscribe(tblSubscribe);
 	}
-
-	
 
 }

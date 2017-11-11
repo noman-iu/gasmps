@@ -15,7 +15,6 @@ import com.gasmps.hbm.model.TblSubscribe;
 /**
  * @author akhtar
  */
-
 @Repository("tblSubscribeInfoImpl")
 public class TblSubscribeInfoImpl extends AbstractDAO<Serializable, TblSubscribe> implements TblSubscribeInfo{
 

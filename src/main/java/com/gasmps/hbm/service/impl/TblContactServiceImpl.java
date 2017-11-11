@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gasmps.hbm.dao.info.TblContactInfo;
 import com.gasmps.hbm.model.TblContact;
 import com.gasmps.hbm.service.TblContactService;
 import com.gasmps.hbm.service.TblSequenceService;
@@ -18,45 +17,44 @@ import com.gasmps.utils.Constant;
 
 @Service("tblContactServiceImpl")
 @Transactional
-public class TblContactServiceImpl implements TblContactService{
+public class TblContactServiceImpl extends TblContactService {
 
-	@Autowired
-	TblContactInfo tblContactInfo;
-	
 	@Autowired
 	TblSequenceService tblSequenceService;
 
+	public TblContactServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public TblContact getContactByKey(String id) {
-		return tblContactInfo.getContactByKey(id);
+		return super.getContactByKey(id);
 	}
 
 	@Override
 	public TblContact getContactByEmail(String email) {
-		return tblContactInfo.getContactByEmail(email);
+		return super.getContactByEmail(email);
 	}
 
 	@Override
 	public List<TblContact> getAllContact() {
-		return tblContactInfo.getAllContact();
+		return super.getAllContact();
 	}
 
 	@Override
 	public void updateContact(TblContact tblContact) {
-		tblContactInfo.updateContact(tblContact);
+		super.updateContact(tblContact);
 	}
 
 	@Override
 	public void deleteContact(String email) {
-		tblContactInfo.deleteContact(email);
+		super.deleteContact(email);
 	}
 
 	@Override
 	public void saveContact(TblContact tblContact) throws Exception {
 		tblContact.setContactId(tblSequenceService.getNextSequenceByKey(Constant.Sequence.CONTACT.id));
-		tblContactInfo.saveContact(tblContact);
+		super.saveContact(tblContact);
 	}
-	
-	
 
 }

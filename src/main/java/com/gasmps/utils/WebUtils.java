@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public final class WebUtils {
-
+	
 	public static String getIp(HttpServletRequest request) {
 
 		String ip = request.getHeader("X-Forwarded-For");
@@ -75,5 +75,7 @@ public final class WebUtils {
 		}
 		return machine;
 	}
+	
+	
 
 }

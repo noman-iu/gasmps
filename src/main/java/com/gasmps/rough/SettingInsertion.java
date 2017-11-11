@@ -5,16 +5,19 @@
  */
 package com.gasmps.rough;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.gasmps.utils.Utility;
+import com.gasmps.utils.Global;
 
 /**
  *
@@ -26,6 +29,52 @@ public class SettingInsertion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+    	SettingInsertion.insertGallery();
+    	//SettingInsertion.insertSetting();
+    }
+    
+    public static void insertGallery() {
+        Connection con = null;
+        try {
+            
+            
+            DBTemp dt =DBTemp.getStatementInstance();
+            con =  dt.con;
+            String sqlInsert = "Insert into tbl_gallery (gallery_id,gallery_name,gallery_description) values (?,?,?)";
+            PreparedStatement psInsert =  con.prepareStatement(sqlInsert);
+            
+            File file = new File("C:\\gas\\gallery");
+            String fileList[] = file.list();
+            Arrays.sort(fileList,new Comparator<String>() {
+    			@Override
+    			public int compare(String o1, String o2) {
+    				return Integer.valueOf(o1.split("\\.")[0]).compareTo(Integer.valueOf(o2.split("\\.")[0]));
+    			}
+    		});
+            for(String f: fileList) {
+	            String id = SettingInsertion.getSequence("GALLERY_ID");
+	            psInsert.setString(1, id);
+	            psInsert.setString(2, f);
+	            psInsert.setString(3, "Dummy");
+	            psInsert.execute();
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SettingInsertion.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try {
+                System.err.println("Setting Inserted");
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SettingInsertion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+}
+    
+    
+    }
+    
+    public static void insertSetting() {
+
         Connection con =null;
         try {
             
@@ -49,6 +98,7 @@ public class SettingInsertion {
                 Logger.getLogger(SettingInsertion.class.getName()).log(Level.SEVERE, null, ex);
             }
 }
+    
     }
     
     public static String getSequence(String sequenceName) {
@@ -74,7 +124,7 @@ public class SettingInsertion {
                 ret = String.valueOf(id);
                 if( id >= min && id <= max ){
                     id =id+inc;
-                    newValue = Utility.paddingString(String.valueOf(id), 10, "0", true);
+                    newValue = Global.paddingString(String.valueOf(id), 10, "0", true);
                 }
                 else{
                 newValue =new SimpleDateFormat("hhmmssddMM").format(new Date());
@@ -103,7 +153,7 @@ public class SettingInsertion {
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return Utility.paddingString(ret, 10, "0", true).trim();
+        return Global.paddingString(ret, 10, "0", true).trim();
     }
     
     
