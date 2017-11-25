@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.gasmps.hbm.configuration.HibernateConfiguration;
 import com.gasmps.hbm.model.TblApply;
 import com.gasmps.hbm.model.TblContact;
 import com.gasmps.hbm.model.TblGallery;
@@ -70,8 +71,14 @@ public class WebController {
 
 	static final Logger logger = LoggerFactory.getLogger(WebController.class);
 
+	
+	@Autowired
+	HibernateConfiguration hibernateConfiguration;
+	
 	public WebController() {
+		
 		logger.info("WebController constructor");
+		hibernateConfiguration.getDataSource();
 	}
 
 	@ModelAttribute("galleryId")
