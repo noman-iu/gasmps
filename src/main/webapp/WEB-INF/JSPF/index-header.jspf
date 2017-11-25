@@ -34,11 +34,11 @@
                            style="background-color: transparent;">Overview</a></li>
                         <li><a href="services.html" data-hover="Founder's"
                            style="background-color: transparent;">Founder's</a></li>
-                        <li><a href="message.html" data-hover="Messages"
+                        <li><a href="<c:url value='message'/>" data-hover="Messages"
                            style="background-color: transparent;">Messages</a></li>
                         <li><a href="team.html" data-hover="Our Team"
                            style="background-color: transparent;">Our Team</a></li>
-                        <li><a href="faq.html" data-hover="FAQ'S"
+                        <li><a href="<c:url value='faq'/>" data-hover="FAQ'S"
                            style="background-color: transparent;">FAQ'S</a></li>
                      </ul>
                   </li>

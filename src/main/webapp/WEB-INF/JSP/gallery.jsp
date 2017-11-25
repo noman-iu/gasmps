@@ -71,12 +71,12 @@ Date : 20 June 2016
       </script>		
       <!--End of pop-up-->
       <!--//header-->
-      <%@include file="/WEB-INF/JSPF/index-header.jspf" %>
+      <%@include file="/WEB-INF/JSPF/header.jspf" %>
       <!-- End of header-->
       <!--banner-->
       <div class="head">
          <div class="container">
-            <h2 > <a href="index.html">Home</a> / <span>Gallery </span></h2>
+            <h2 > <a href="<c:url value='/'/>">Home</a> / <span>Gallery </span></h2>
          </div>
       </div>
       <!--galllery-->
