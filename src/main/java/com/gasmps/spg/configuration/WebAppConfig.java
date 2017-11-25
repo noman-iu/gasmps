@@ -1,5 +1,9 @@
 package com.gasmps.spg.configuration;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
@@ -22,8 +26,23 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
 	static final Logger logger = LoggerFactory.getLogger(WebAppConfig.class);
 	
-	public WebAppConfig() {
-		logger.info("WebAppConfig constructor");
+	public WebAppConfig() throws SQLException {
+		logger.info("****************WebAppConfig constructor*****************");
+		String USERNAME = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+		String PASSWORD = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+		String DB_NAME = System.getenv("OPENSHIFT_APP_NAME");
+		String FORNAME_URL = "com.mysql.jdbc.Driver";
+		String URL = "jdbc:"+System.getenv("OPENSHIFT_MYSQL_DB_URL")+ DB_NAME;
+		Connection m_connection = DriverManager.getConnection(URL , USERNAME , PASSWORD);
+		
+		logger.info("USERNAME:"+USERNAME);
+		logger.info("PASSWORD:"+PASSWORD);
+		logger.info("DB_NAME:"+DB_NAME);
+		logger.info("FORNAME_URL:"+FORNAME_URL);
+		logger.info("URL:"+URL);
+		logger.info("m_connection:"+m_connection);
+		
+		logger.info("****************WebAppConfig constructor End*****************");
 	}
 	
 	@Override
