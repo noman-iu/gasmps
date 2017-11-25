@@ -46,16 +46,16 @@ import com.gasmps.utils.WebUtils;
 public class WebController {
 
 	String galleryId;
-	
+
 	@Autowired
 	Utils utils;
-	
+
 	@Autowired
 	TblSequenceService tblSequenceServiceImpl;
 
 	@Autowired
 	TblUserLogService tblUserLogServiceImpl;
-	
+
 	@Autowired
 	TblAppLogService tblAppLogServiceImpl;
 
@@ -64,21 +64,20 @@ public class WebController {
 
 	@Autowired
 	TblContactService tblContactServiceImpl;
-	
+
 	@Autowired
 	TblGalleryService tblGalleryServiceImpl;
-	
+
 	static final Logger logger = LoggerFactory.getLogger(WebController.class);
 
 	public WebController() {
 		logger.info("WebController constructor");
 	}
-	
+
 	@ModelAttribute("galleryId")
 	public String initializeSession() {
 		return galleryId = "0";
 	}
-	
 
 	@RequestMapping(value = { "/", "/index" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String getIndexPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -138,7 +137,8 @@ public class WebController {
 	}
 
 	@RequestMapping(value = "contact", method = RequestMethod.POST)
-	public String saveContact(@Valid TblContact tblContact, BindingResult bindingResult, ModelMap model) throws Exception {
+	public String saveContact(@Valid TblContact tblContact, BindingResult bindingResult, ModelMap model)
+			throws Exception {
 		GenricRespone respone = new GenricRespone();
 		if (bindingResult.hasErrors()) {
 			respone.setMessage(bindingResult.getFieldError().getDefaultMessage());
@@ -151,7 +151,7 @@ public class WebController {
 		}
 		return "JSP/contact";
 	}
-	
+
 	@RequestMapping(value = "gallery", method = RequestMethod.GET)
 	public String getGallery(ModelMap model) throws IOException {
 		List<TblGallery> tblGalleryList = tblGalleryServiceImpl.getNextRecordFromGalleryId(galleryId);
@@ -159,81 +159,83 @@ public class WebController {
 		ArrayList<Object> data = null;
 		TblGallery tblGallery = null;
 		Iterator<TblGallery> it = tblGalleryList.iterator();
-		if(!(tblGalleryList.size() > 2))
+		if (!(tblGalleryList.size() > 2))
 			return "JSP/gallery";
-			
+
 		while (it.hasNext()) {
 			tblGallery = it.next();
-			
+
 			data = new ArrayList<>();
 			data.add(utils.readGalleryDataFromFile(tblGallery.getGalleryName()));
 			data.add(tblGallery.getGalleryHeading());
 			data.add(tblGallery.getGalleryDescription());
 			data.add(tblGallery.getGalleryTime());
-			
+
 			tblGallery = it.next();
 			data.add(utils.readGalleryDataFromFile(tblGallery.getGalleryName()));
 			data.add(tblGallery.getGalleryHeading());
 			data.add(tblGallery.getGalleryDescription());
 			data.add(tblGallery.getGalleryTime());
-			
+
 			container.add(data);
-			//galleryId = tblGallery.getGalleryId();
+			// galleryId = tblGallery.getGalleryId();
 		}
 		model.addAttribute("res", container);
 		return "JSP/gallery";
 	}
 
-	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String getLogin(ModelMap model) {
 		model.addAttribute("tblLogin", new TblLogin());
-			return "JSP/login";
+		return "JSP/login";
 	}
-	
+
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String validateUserLogin(@Valid TblLogin tblLogin, BindingResult bindingResult, ModelMap model) {
-		if(tblLogin.getLoginEmail().equalsIgnoreCase("admin@gmail.com") && tblLogin.getLoginPassword().equals("admin@123")) {
+		if (tblLogin.getLoginEmail().equalsIgnoreCase("admin@gmail.com")
+				&& tblLogin.getLoginPassword().equals("admin@123")) {
 			return "JSP/admin";
 		}
 		return "JSP/404";
 	}
+
+	@RequestMapping(value = "server/php", method = { RequestMethod.POST, RequestMethod.GET })
+	// public String upload(@RequestParam CommonsMultipartFile file,HttpSession
+	// session){
+	public String upload() {
+		/*
+		 * String path = session.getServletContext().getRealPath("/"); String filename =
+		 * file.getOriginalFilename();
+		 * 
+		 * System.out.println(path+"*************************************** "+filename);
+		 * try{ byte barr[] = file.getBytes();
+		 * 
+		 * BufferedOutputStream bout = new BufferedOutputStream( new
+		 * FileOutputStream(path+"/"+filename)); bout.write(barr); bout.flush();
+		 * bout.close();
+		 * 
+		 * }catch(Exception e){System.out.println(e);}
+		 */
+		return "{\"files\": [\r\n" + "  {\r\n" + "    \"name\": \"picture1.jpg\",\r\n" + "    \"size\": 902604,\r\n"
+				+ "    \"url\": \"http:\\/\\/example.org\\/files\\/picture1.jpg\",\r\n"
+				+ "    \"thumbnailUrl\": \"http:\\/\\/example.org\\/files\\/thumbnail\\/picture1.jpg\",\r\n"
+				+ "    \"deleteUrl\": \"http:\\/\\/example.org\\/files\\/picture1.jpg\",\r\n"
+				+ "    \"deleteType\": \"DELETE\"\r\n" + "  },\r\n" + "  {\r\n" + "    \"name\": \"picture2.jpg\",\r\n"
+				+ "    \"size\": 841946,\r\n" + "    \"url\": \"http:\\/\\/example.org\\/files\\/picture2.jpg\",\r\n"
+				+ "    \"thumbnailUrl\": \"http:\\/\\/example.org\\/files\\/thumbnail\\/picture2.jpg\",\r\n"
+				+ "    \"deleteUrl\": \"http:\\/\\/example.org\\/files\\/picture2.jpg\",\r\n"
+				+ "    \"deleteType\": \"DELETE\"\r\n" + "  }\r\n" + "]}";
+	}
+
+	@RequestMapping(value = "message", method = RequestMethod.GET)
+	public String getMessage() {
+		return "JSP/message";
+	}
 	
-	@RequestMapping(value="server/php",method= {RequestMethod.POST,RequestMethod.GET})  
-	//public String upload(@RequestParam CommonsMultipartFile file,HttpSession session){
-	public String upload(){
-	        /*String path = session.getServletContext().getRealPath("/");  
-	        String filename = file.getOriginalFilename();  
-	          
-	        System.out.println(path+"*************************************** "+filename);  
-	        try{  
-	        byte barr[] = file.getBytes();  
-	          
-	        BufferedOutputStream bout = new BufferedOutputStream(  
-	                 new FileOutputStream(path+"/"+filename));  
-	        bout.write(barr);  
-	        bout.flush();  
-	        bout.close();  
-	          
-	        }catch(Exception e){System.out.println(e);}  */
-	        return "{\"files\": [\r\n" + 
-					"  {\r\n" + 
-					"    \"name\": \"picture1.jpg\",\r\n" + 
-					"    \"size\": 902604,\r\n" + 
-					"    \"url\": \"http:\\/\\/example.org\\/files\\/picture1.jpg\",\r\n" + 
-					"    \"thumbnailUrl\": \"http:\\/\\/example.org\\/files\\/thumbnail\\/picture1.jpg\",\r\n" + 
-					"    \"deleteUrl\": \"http:\\/\\/example.org\\/files\\/picture1.jpg\",\r\n" + 
-					"    \"deleteType\": \"DELETE\"\r\n" + 
-					"  },\r\n" + 
-					"  {\r\n" + 
-					"    \"name\": \"picture2.jpg\",\r\n" + 
-					"    \"size\": 841946,\r\n" + 
-					"    \"url\": \"http:\\/\\/example.org\\/files\\/picture2.jpg\",\r\n" + 
-					"    \"thumbnailUrl\": \"http:\\/\\/example.org\\/files\\/thumbnail\\/picture2.jpg\",\r\n" + 
-					"    \"deleteUrl\": \"http:\\/\\/example.org\\/files\\/picture2.jpg\",\r\n" + 
-					"    \"deleteType\": \"DELETE\"\r\n" + 
-					"  }\r\n" + 
-					"]}";
-	    } 
+	
+	@RequestMapping(value = "faq", method = RequestMethod.GET)
+	public String getFaq() {
+		return "JSP/faq";
+	}
 
 }
