@@ -25,7 +25,7 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="orange" data-image="assets/img/sidebar-1.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -190,11 +190,9 @@
                         </ul>
                     </nav>
                     <p class="copyright pull-right">
-                        &copy;
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script>
-                        <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                        © 2016 GASMPS. All rights reserved | Design by <a
+		                  href="https://www.linkedin.com/in/noman-akhtar-a37192b7/"
+		                  target="_blank">akhtar</a>
                     </p>
                 </div>
             </footer>

@@ -5,14 +5,14 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="header">
-	<div class="navigation">
+	<div class="navigation" >
 		<div class="container">
 			<div class="logo">
 				<div id="logo_1"></div>
 				<div id="logo_2">
 					<h1>
 						<a style="margin: 0; padding: 0; float: left; color: black;"
-							href="index.html">G.A.S</a>
+							href="<c:url value='/' />">G.A.S</a>
 					</h1>
 				</div>
 				<div id="logo_3">
@@ -23,7 +23,7 @@
 				<span class="menu"><img src="images/menuBlack.png" alt=" " /></span>
 				<nav class="link-effect-3" id="link-effect-3">
 					<ul class="nav1 nav nav-wil">
-						<li><a data-hover="Home" href="index.html">Home</a></li>
+						<li><a data-hover="Home" href="<c:url value='/'/>">Home</a></li>
 						<li class="dropdown active"><a href="#" data-hover="About"
 							class="dropdown-toggle"
 							style="background-color: transparent; color: black;"
@@ -34,11 +34,11 @@
 									style="background-color: transparent;">Overview</a></li>
 								<li><a href="about.html" data-hover="Founder's"
 									style="background-color: transparent;">Founder's</a></li>
-								<li><a href="message.html" data-hover="Messages"
+								<li><a href="<c:url value='message'/>" data-hover="Messages"
 									style="background-color: transparent;">Messages</a></li>
 								<li><a href="about.html" data-hover="Our Team"
 									style="background-color: transparent;">Our Team</a></li>
-								<li><a href="about.html" data-hover="FAQ'S"
+								<li><a href="<c:url value='faq'/>" data-hover="FAQ'S"
 									style="background-color: transparent;">FAQ'S</a></li>
 
 							</ul></li>
@@ -55,14 +55,14 @@
 								<li><a href="about.html" data-hover="Addmission Enquiry"
 									style="background-color: transparent;">Addmission Enquiry</a></li>
 							</ul></li>
-						<li><a data-hover="Gallery" href="gallery.html"
+						<li><a data-hover="Gallery" href='<c:url value='gallery' />'
 							class="scroll">Gallery</a></li>
 						<li><a data-hover="Contact" href='<c:url value='contact' />'
 							class="scroll">Contact</a></li>
 						<li><a data-hover="O" class="popup-with-zoom-anim"
 							href="#small-dialog"><i class="glyphicon glyphicon-search">
 							</i></a></li>
-						<li><a data-hover="" href="login.html"><i
+						<li><a data-hover="" href="<c:url value='login'/>"><i
 								class="glyphicon glyphicon-user"> </i></a></li>
 					</ul>
 				</nav>
