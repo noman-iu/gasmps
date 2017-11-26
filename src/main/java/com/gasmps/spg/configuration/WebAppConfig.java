@@ -27,16 +27,17 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	static final Logger logger = LoggerFactory.getLogger(WebAppConfig.class);
 	
 	public WebAppConfig()  {
-		try {
-		logger.info("****************WebAppConfig constructor*****************");
-		
 		String userName = "root";
 		String password = "oITSq1HReaoPASQG";
 		String port = System.getenv("MYSQL_SERVICE_PORT");
 		String datbaseName = "gas";
-		String host = System.getenv("MYSQL_SERVICE_HOST");
+		String host = System.getenv("HOSTNAME");
 		String driverName = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://"+host+":"+port+"/"+datbaseName;
+		try {
+		logger.info("****************WebAppConfig constructor*****************");
+		
+		
 
 		logger.info("userName:"+userName);
 		logger.info("password:"+password);
@@ -52,6 +53,17 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		logger.info("****************WebAppConfig constructor End*****************");
 		}catch (Exception e) {
 			logger.info("****************Errrrorrrrr*****************");
+			e.printStackTrace();
+			try {
+				host = System.getenv("MYSQL_SERVICE_HOST");
+				url = "jdbc:mysql://"+host+":"+port+"/"+datbaseName;
+				Class.forName(driverName);
+				Connection connection = DriverManager.getConnection(url , userName , password);
+				logger.info("m_connection:"+connection);
+			} catch (Exception e1) {
+				logger.info("****************Errrrorrrrr2222222*****************");
+				e1.printStackTrace();
+			}
 		}
 	}
 	
