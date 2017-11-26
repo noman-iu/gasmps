@@ -44,7 +44,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		logger.info("port:"+port);
 		logger.info("datbaseName:"+datbaseName);
 		logger.info("host:"+host);
-		logger.info("url:"+url);
+		logger.info("urlll:"+url);
 		logger.info("driverName:"+driverName);
 		Class.forName(driverName);
 		Connection connection = DriverManager.getConnection(url , userName , password);
