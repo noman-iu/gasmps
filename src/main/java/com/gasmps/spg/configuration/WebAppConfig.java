@@ -29,10 +29,10 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	public WebAppConfig() throws SQLException {
 		logger.info("****************WebAppConfig constructor*****************");
 		
-		String userName = System.getenv("MYSQL_USER");
-		String password = System.getenv("MYSQL_PASSWORD");
+		String userName = "root";
+		String password = "oITSq1HReaoPASQG";
 		String port = System.getenv("MYSQL_SERVICE_PORT");
-		String datbaseName = System.getenv("MYSQL_DATABASE");
+		String datbaseName = "gas";
 		String host = System.getenv("MYSQL_SERVICE_HOST");
 		String driverName = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://"+host+":"+port+"/"+datbaseName;
@@ -45,8 +45,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		logger.info("url:"+url);
 		logger.info("driverName:"+driverName);
 		
-		Connection m_connection = DriverManager.getConnection(url , userName , password);
-		logger.info("m_connection:"+m_connection);
+		Connection connection = DriverManager.getConnection(url , userName , password);
+		logger.info("m_connection:"+connection);
 		
 		logger.info("****************WebAppConfig constructor End*****************");
 	}
