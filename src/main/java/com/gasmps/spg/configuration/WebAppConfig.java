@@ -28,19 +28,25 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	
 	public WebAppConfig() throws SQLException {
 		logger.info("****************WebAppConfig constructor*****************");
-		String USERNAME = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-		String PASSWORD = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-		String DB_NAME = System.getenv("OPENSHIFT_APP_NAME");
-		String FORNAME_URL = "com.mysql.jdbc.Driver";
-		String URL = "jdbc:"+System.getenv("OPENSHIFT_MYSQL_DB_URL")+ DB_NAME;
-		//Connection m_connection = DriverManager.getConnection(URL , USERNAME , PASSWORD);
 		
-		logger.info("USERNAME:"+USERNAME);
-		logger.info("PASSWORD:"+PASSWORD);
-		logger.info("DB_NAME:"+DB_NAME);
-		logger.info("FORNAME_URL:"+FORNAME_URL);
-		logger.info("URL:"+URL);
-		//logger.info("m_connection:"+m_connection);
+		String userName = System.getenv("MYSQL_USER");
+		String password = System.getenv("MYSQL_PASSWORD");
+		String port = System.getenv("MYSQL_SERVICE_PORT");
+		String datbaseName = System.getenv("MYSQL_DATABASE");
+		String host = System.getenv("MYSQL_SERVICE_HOST");
+		String driverName = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://"+host+":"+port+"/"+datbaseName;
+
+		logger.info("userName:"+userName);
+		logger.info("password:"+password);
+		logger.info("port:"+port);
+		logger.info("datbaseName:"+datbaseName);
+		logger.info("host:"+host);
+		logger.info("url:"+url);
+		logger.info("driverName:"+driverName);
+		
+		Connection m_connection = DriverManager.getConnection(url , userName , password);
+		logger.info("m_connection:"+m_connection);
 		
 		logger.info("****************WebAppConfig constructor End*****************");
 	}
