@@ -33,14 +33,14 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		String DB_NAME = System.getenv("OPENSHIFT_APP_NAME");
 		String FORNAME_URL = "com.mysql.jdbc.Driver";
 		String URL = "jdbc:"+System.getenv("OPENSHIFT_MYSQL_DB_URL")+ DB_NAME;
-		Connection m_connection = DriverManager.getConnection(URL , USERNAME , PASSWORD);
+		//Connection m_connection = DriverManager.getConnection(URL , USERNAME , PASSWORD);
 		
 		logger.info("USERNAME:"+USERNAME);
 		logger.info("PASSWORD:"+PASSWORD);
 		logger.info("DB_NAME:"+DB_NAME);
 		logger.info("FORNAME_URL:"+FORNAME_URL);
 		logger.info("URL:"+URL);
-		logger.info("m_connection:"+m_connection);
+		//logger.info("m_connection:"+m_connection);
 		
 		logger.info("****************WebAppConfig constructor End*****************");
 	}
