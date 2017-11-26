@@ -26,7 +26,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
 	static final Logger logger = LoggerFactory.getLogger(WebAppConfig.class);
 	
-	public WebAppConfig() throws SQLException, ClassNotFoundException {
+	public WebAppConfig()  {
+		try {
 		logger.info("****************WebAppConfig constructor*****************");
 		
 		String userName = "root";
@@ -44,11 +45,14 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		logger.info("host:"+host);
 		logger.info("url:"+url);
 		logger.info("driverName:"+driverName);
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName(driverName);
 		Connection connection = DriverManager.getConnection(url , userName , password);
 		logger.info("m_connection:"+connection);
 		
 		logger.info("****************WebAppConfig constructor End*****************");
+		}catch (Exception e) {
+			logger.info("****************Errrrorrrrr*****************");
+		}
 	}
 	
 	@Override
