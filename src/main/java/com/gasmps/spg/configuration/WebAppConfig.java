@@ -30,7 +30,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		String userName = "root";
 		String password = "oITSq1HReaoPASQG";
 		String port = System.getenv("MYSQL_SERVICE_PORT");
-		String datbaseName = "gas";
+		String datbaseName = "sampledb";
 		String host = System.getenv("HOSTNAME");
 		String driverName = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://"+host+":"+port+"/"+datbaseName;
