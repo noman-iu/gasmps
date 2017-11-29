@@ -51,6 +51,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		logger.info("m_connection:"+connection);
 		
 		logger.info("****************WebAppConfig constructor End*****************");
+		
+		logger.info("****************WebAppConfig constructor End*****************");
 		}catch (Exception e) {
 			logger.info("****************Errrrorrrrr*****************");
 			e.printStackTrace();
