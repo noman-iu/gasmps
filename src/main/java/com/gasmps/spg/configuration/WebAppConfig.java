@@ -27,11 +27,11 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	static final Logger logger = LoggerFactory.getLogger(WebAppConfig.class);
 	
 	public WebAppConfig()  {
-		String userName = "root";
-		String password = "oITSq1HReaoPASQG";
+		String userName = "user7JP";
+		String password = "qPPT4wvn3BVAi0Dx";
 		String port = System.getenv("MYSQL_SERVICE_PORT");
 		String datbaseName = "gas";
-		String host = System.getenv("HOSTNAME");
+		String host = System.getenv("MYSQL_SERVICE_HOST");
 		String driverName = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://"+host+":"+port+"/"+datbaseName;
 		try {
