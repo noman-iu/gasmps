@@ -1,9 +1,5 @@
 package com.gasmps.spg.configuration;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
@@ -26,47 +22,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
 	static final Logger logger = LoggerFactory.getLogger(WebAppConfig.class);
 	
-	public WebAppConfig()  {
-		String userName = "user7JP";
-		String password = "qPPT4wvn3BVAi0Dx";
-		String port = System.getenv("MYSQL_SERVICE_PORT");
-		String datbaseName = "gas";
-		String host = System.getenv("MYSQL_SERVICE_HOST");
-		String driverName = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://"+host+":"+port+"/"+datbaseName;
-		try {
-		logger.info("****************WebAppConfig constructor*****************");
-		
-		
-
-		logger.info("userName:"+userName);
-		logger.info("password:"+password);
-		logger.info("port:"+port);
-		logger.info("datbaseName:"+datbaseName);
-		logger.info("host:"+host);
-		logger.info("urlll:"+url);
-		logger.info("driverName:"+driverName);
-		Class.forName(driverName);
-		Connection connection = DriverManager.getConnection(url , userName , password);
-		logger.info("m_connection:"+connection);
-		
-		logger.info("****************WebAppConfig constructor End*****************");
-		
-		logger.info("****************WebAppConfig constructor End*****************");
-		}catch (Exception e) {
-			logger.info("****************Errrrorrrrr*****************");
-			e.printStackTrace();
-			try {
-				host = System.getenv("MYSQL_SERVICE_HOST");
-				url = "jdbc:mysql://"+host+":"+port+"/"+datbaseName;
-				Class.forName(driverName);
-				Connection connection = DriverManager.getConnection(url , userName , password);
-				logger.info("m_connection:"+connection);
-			} catch (Exception e1) {
-				logger.info("****************Errrrorrrrr2222222*****************");
-				e1.printStackTrace();
-			}
-		}
+	public WebAppConfig() {
+			logger.info("****************WebAppConfig constructor*****************");
 	}
 	
 	@Override
