@@ -44,15 +44,20 @@ public class HibernateConfiguration {
 
 	@Bean
 	public DataSource getDataSource() {
+		
+		String port = System.getenv("MYSQL_SERVICE_PORT");
+		String host = System.getenv("MYSQL_SERVICE_HOST");
+		String url = "jdbc:mysql://"+host+":"+port+"/"+environment.getRequiredProperty("jdbc.database");
+		
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
 		driverManagerDataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
-		driverManagerDataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+		driverManagerDataSource.setUrl(url);
 		driverManagerDataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
 		driverManagerDataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
 		
 		System.out.println("*****************************************************");
 		System.out.println("Driver ="+environment.getRequiredProperty("jdbc.driverClassName"));
-		System.out.println("Url ="+environment.getRequiredProperty("jdbc.url"));
+		System.out.println("Url ="+url);
 		System.out.println("User ="+environment.getRequiredProperty("jdbc.username"));
 		System.out.println("Pass ="+environment.getRequiredProperty("jdbc.password"));
 		return driverManagerDataSource;
