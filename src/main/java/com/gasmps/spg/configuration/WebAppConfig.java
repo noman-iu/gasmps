@@ -31,7 +31,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		String password = "qPPT4wvn3BVAi0Dx";
 		String port = System.getenv("MYSQL_SERVICE_PORT");
 		String datbaseName = "gas";
-		String host = System.getenv("HOSTNAME");
+		String host = System.getenv("MYSQL_SERVICE_HOST");
 		String driverName = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://"+host+":"+port+"/"+datbaseName;
 		try {
@@ -49,6 +49,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		Class.forName(driverName);
 		Connection connection = DriverManager.getConnection(url , userName , password);
 		logger.info("m_connection:"+connection);
+		
+		logger.info("****************WebAppConfig constructor End*****************");
 		
 		logger.info("****************WebAppConfig constructor End*****************");
 		}catch (Exception e) {
