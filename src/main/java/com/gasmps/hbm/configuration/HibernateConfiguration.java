@@ -47,7 +47,7 @@ public class HibernateConfiguration {
 		
 		String port = System.getenv("MYSQL_SERVICE_PORT");
 		String host = System.getenv("MYSQL_SERVICE_HOST");
-		String url = "jdbc:mysql://"+host+":"+port+"/"+environment.getRequiredProperty("jdbc.database");
+		String url = "jdbc:mysql://"+host+":"+port+"/"+"gas";
 		
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
 		driverManagerDataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
