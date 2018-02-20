@@ -45,8 +45,8 @@ public class HibernateConfiguration {
 	@Bean
 	public DataSource getDataSource() {
 		
-		String port = System.getenv("MYSQL_SERVICE_PORT");
-		String host = System.getenv("MYSQL_SERVICE_HOST");
+		String port = "3306";//System.getenv("MYSQL_SERVICE_PORT");
+		String host = "localhost";//System.getenv("MYSQL_SERVICE_HOST");
 		String url = "jdbc:mysql://"+host+":"+port+"/"+"gas";
 		
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();

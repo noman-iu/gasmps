@@ -23,6 +23,7 @@ import org.springframework.stereotype.Component;
 
 import com.gasmps.hbm.model.TblSetting;
 import com.gasmps.hbm.service.TblSettingService;
+import com.gasmps.utils.Constant.Folder;
 
 /**
  *
@@ -50,14 +51,14 @@ public class Utils {
 	}
 	
 	public String readGalleryDataFromFile(String fileName) throws IOException {
-		String path = getFolderPath(Constant.Attributes.GALARY_FOLDER);
+		String path = getPath(Constant.Folder.GALARY_FOLDER);
 		File file = new File(path + fileName);
 		InputStream is = new FileInputStream(file);
 		byte src[] = IOUtils.toByteArray(is);
 		return new String(Base64.getEncoder().encode(src),"UTF-8");
 	}
 	
-	public String getFolderPath(String folder) {
+	public String getPath(Constant.Folder folder) {
 		
 		TblSetting tblSetting = tblSettingServiceImpl.getSettingByKey("HOME_PATH");
 		if(tblSetting == null || tblSetting.getSettingValue() == null){
@@ -66,7 +67,7 @@ public class Utils {
 		String path = tblSetting.getSettingValue();
 		if(!path.endsWith(File.separator)) 
 			path = path + File.separator;
-		path = path + folder;
+		path = path + folder.value();
 		if(!path.endsWith(File.separator)) 
 			path = path + File.separator;
 		return path;

@@ -23,19 +23,12 @@ public class Constant {
 	}
 
 	public static enum GenricResponseCode {
-		GENRIC_SUCCESSFUL_MESSAGE,
-		GENRIC_SUCCESSFUL_CODE,
-		GENRIC_DUPLICATE_MESSAGE;
+		GENRIC_SUCCESSFUL_MESSAGE, GENRIC_SUCCESSFUL_CODE, GENRIC_DUPLICATE_MESSAGE;
 	}
 
 	public enum Sequence {
-		APPLY("APPLY_ID"), 
-		APP_LOG("APP_LOG_ID"), 
-		CONTACT("CONTACT_ID"), 
-		SETTING("SETTING_ID"), 
-		SUBSCRIBE("SUBSCRIBE_ID"), 
-		GALLERY("GALLERY_ID"),
-		USER_LOG("USER_LOG_ID");
+		APPLY("APPLY_ID"), APP_LOG("APP_LOG_ID"), CONTACT("CONTACT_ID"), SETTING("SETTING_ID"), SUBSCRIBE(
+				"SUBSCRIBE_ID"), GALLERY("GALLERY_ID"), USER_LOG("USER_LOG_ID");
 		public final String id;
 
 		private Sequence(String id) {
@@ -43,7 +36,17 @@ public class Constant {
 		}
 	}
 
-	public static final class Attributes {
-		public static final String GALARY_FOLDER = "gallery";
+	public enum Folder {
+		GALARY_FOLDER("gallery");
+
+		private final String path;
+
+		private Folder(String path) {
+			this.path = path;
+		}
+
+		public String value() {
+			return path;
+		}
 	}
 }
