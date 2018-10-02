@@ -2,6 +2,9 @@ package com.gasmps.hbm.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.sql.Timestamp;
 
 
@@ -29,6 +32,7 @@ public class TblAppLog implements Serializable {
 	private String logStatus;
 
 	@Column(name="log_time")
+	@UpdateTimestamp
 	private Timestamp logTime;
 
 	public TblAppLog() {
